@@ -1,0 +1,99 @@
+{
+	"info": {
+		"_postman_id": "8410b750-134e-4b03-8eca-5aaab7a1e01c",
+		"name": "githubcomp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "compare",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "compare[]",
+							"value": "guzzle/guzzle",
+							"type": "text"
+						},
+						{
+							"key": "compare[]",
+							"value": "symfony/symfony",
+							"type": "text"
+						},
+						{
+							"key": "compare[]",
+							"value": "docker/compose",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/repositories/compare",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"repositories",
+						"compare"
+					]
+				},
+				"description": "Endpoint for compare multiple repositories"
+			},
+			"response": []
+		},
+		{
+			"name": "info",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "compare[]",
+							"value": "guzzle/guzzle",
+							"type": "text"
+						},
+						{
+							"key": "compare[]",
+							"value": "symfony/symfony",
+							"type": "text"
+						},
+						{
+							"key": "compare[]",
+							"value": "docker/compose",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/repositories/owner/guzzle/package/guzzle",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"repositories",
+						"owner",
+						"guzzle",
+						"package",
+						"guzzle"
+					]
+				},
+				"description": "Endpoint for get specific repository information"
+			},
+			"response": []
+		}
+	]
+}
