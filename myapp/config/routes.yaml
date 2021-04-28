@@ -1,0 +1,8 @@
+info:
+  path: /api/repositories/owner/{ownerName}/package/{packageName}
+  controller: App\Controller\BaseController::info
+  methods: GET
+compare:
+  path: /api/repositories/compare
+  controller: App\Controller\BaseController::compare
+  methods: POST
