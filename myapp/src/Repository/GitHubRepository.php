@@ -7,6 +7,8 @@ use App\Entity\PullRequests;
 use App\Entity\RepoInterface;
 use App\Factory\RepoFactoryInterface;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 /**
  * Class GitHubRepository
@@ -47,7 +49,7 @@ class GitHubRepository implements GitHubRepositoryInterface
 
     /**
      * @inheritDoc
-     * @throws \Exception
+     * @throws BadRequestHttpException
      */
     public function info(string $repoName): array
     {
@@ -55,8 +57,8 @@ class GitHubRepository implements GitHubRepositoryInterface
             $msg = "Repository name can't be empty";
             
             $this->logger->error($msg);
-            
-            throw new \Exception($msg);
+
+            throw new BadRequestHttpException($msg, null, Response::HTTP_BAD_REQUEST);
         }
 
         return $this->gitHubClient->getRepoInfo($repoName);
@@ -64,7 +66,7 @@ class GitHubRepository implements GitHubRepositoryInterface
 
     /**
      * @inheritDoc
-     * @throws \Exception
+     * @throws BadRequestHttpException
      */
     public function compare(array $data): array
     {
@@ -73,7 +75,7 @@ class GitHubRepository implements GitHubRepositoryInterface
             
             $this->logger->error($msg);
 
-            throw new \Exception($msg);
+            throw new BadRequestHttpException($msg, null, Response::HTTP_BAD_REQUEST);
         }
 
         $result = ['comparison' => []];
